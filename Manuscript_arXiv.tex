@@ -1,0 +1,45 @@
+\documentclass[a4paper]{article}
+\pdfoutput=1 
+\usepackage{pdfpages}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{hyperref}
+\pagestyle{empty}
+\def\VOID{}
+
+%
+% Make your adjustments here, compile TWICE!
+%
+\def\MANUSCRIPTFILE{Manuscript.pdf}		% the manuscript PDF file
+\def\COPYRIGHTYEAR{2017}	% date of publication/appearence
+\def\CONFERENCE{GLOBECOM 2017 - 2017 IEEE Global Communications Conference} % set after the paper has been accepted
+\def\DOI{10.1109/GLOCOM.2017.8254567}	% set after the paper has been published
+%
+%
+%
+
+\ifx\CONFERENCE\VOID
+	\def\conferencenotice{Submitted for publication}
+\else
+	\ifx\DOI\VOID
+		\def\conferencenotice{Accepted for presentation in: \CONFERENCE}	
+	\else
+		\def\conferencenotice{Published in: \CONFERENCE\\DOI: \href{http://dx.doi.org/\DOI}{\DOI}}
+	\fi
+\fi
+
+\def\copyrightnotice{
+	\copyright~\COPYRIGHTYEAR~IEEE. Personal use of this material is permitted. Permission from IEEE must be obtained for all other uses, including reprinting/republishing this material for advertising or promotional purposes, collecting new collected works for resale or redistribution to servers or lists, or reuse of any copyrighted component of this work in other works.
+}
+
+\def\overlayimage{%
+	\begin{tikzpicture}[remember picture, overlay]
+	\node[below=5mm of current page.north, text width=20cm,font=\sffamily\footnotesize,align=center] {\conferencenotice};
+	\node[above=5mm of current page.south, text width=15cm,font=\sffamily\footnotesize] {\copyrightnotice};
+	\end{tikzpicture}%
+}
+
+\begin{document}
+	\includepdf[pages=1,fitpaper,pagecommand={\overlayimage}]{\MANUSCRIPTFILE}
+	\includepdf[pages=2-last,fitpaper]{\MANUSCRIPTFILE}
+\end{document}
