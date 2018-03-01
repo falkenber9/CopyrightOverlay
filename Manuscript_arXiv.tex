@@ -20,17 +20,19 @@
 
 \ifx\CONFERENCE\VOID
 	\def\conferencenotice{Submitted for publication}
+	\def\copyrightnotice{}
 \else
 	\ifx\DOI\VOID
 		\def\conferencenotice{Accepted for presentation in: \CONFERENCE}	
 	\else
 		\def\conferencenotice{Published in: \CONFERENCE\\DOI: \href{http://dx.doi.org/\DOI}{\DOI}}
 	\fi
+	
+	\def\copyrightnotice{
+		\copyright~\COPYRIGHTYEAR~IEEE. Personal use of this material is permitted. Permission from IEEE must be obtained for all other uses, including reprinting/republishing this material for advertising or promotional purposes, collecting new collected works for resale or redistribution to servers or lists, or reuse of any copyrighted component of this work in other works.
+	}
 \fi
 
-\def\copyrightnotice{
-	\copyright~\COPYRIGHTYEAR~IEEE. Personal use of this material is permitted. Permission from IEEE must be obtained for all other uses, including reprinting/republishing this material for advertising or promotional purposes, collecting new collected works for resale or redistribution to servers or lists, or reuse of any copyrighted component of this work in other works.
-}
 
 \def\overlayimage{%
 	\begin{tikzpicture}[remember picture, overlay]
