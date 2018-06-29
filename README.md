@@ -6,7 +6,7 @@ This repository contains a LaTeX-wrapper for overlaying publications with a copy
 The current version wraps the PDF-Version of a manuscript by appropriate textboxes.
 
 ## Background
-Publishing a paper on the institute's website or in arXiv in most cases requires an appropriate copyright notice of the actual publisher, e.g. IEEE, ACM, or others, visibly overlayed on the first page of the uploaded document.
+Publishing a paper on the institute's website or in arXiv in most cases requires an appropriate copyright notice of the actual publisher, e.g. [IEEE], [ACM], or others, visibly overlayed on the first page of the uploaded document.
 
 This repository provides a collection of such wrappers. (However, currently focused on arXiv and our institute homepage. This is done by the same wrapper.)
 
@@ -20,3 +20,8 @@ This repository provides a collection of such wrappers. (However, currently focu
 
 ## Contact
 Din't hesitate to contact Robert Falkenberg <robert.falkenberg@tu-dortmund.de> for further questions and support.
+
+## References
+
+[IEEE]: https://www.ieee.org/content/dam/ieee-org/ieee/web/org/pubs/author_version_faq.pdf
+[ACM]: https://www.acm.org/publications/policies/copyright-policy
