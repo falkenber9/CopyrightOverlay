@@ -1,0 +1,35 @@
+\documentclass[a4paper]{article}
+\pdfoutput=1 
+\usepackage{pdfpages}
+
+\usepackage[%
+	IEEE,%
+%	disabled,%	Don't show anything at all
+	]{copyright-overlay}
+
+%%%%% UPDATE HERE %%%%%
+\def\MANUSCRIPTFILE{manuscript.pdf}
+\CopyrightAuthor{John Doe}
+\CopyrightYear{2190}
+\ConferenceName{Example Conference}
+\Doi{123456/123456789}
+%\Bibtex{}
+% For \Bibtex, escape every special character, e.g. {,},... by \{,\},...
+% Use \textCR   for Carriage Return,
+%     \textLF   for Line Feed,
+%     \textHT{} for Tab
+% Example:
+\Bibtex{%
+	@InProceedings\{MyBibtexKey2019a,\textCR
+	\textHT{}Author = \{Max Mustermann\},\textCR
+	\textHT{}Title = \{\{EXAMPLE\}: \{An\} example for a BIBTEX entry\},\textCR
+	\textHT{}Booktitle = \{Ultimate Conference 2019\},\textCR
+	\}
+}
+
+\pagestyle{empty}
+
+\begin{document}
+	\includepdf[pages=1,fitpaper,pagecommand={\PrintCopyrightOverlay}]{\MANUSCRIPTFILE}
+	\includepdf[pages=2-last,fitpaper]{\MANUSCRIPTFILE}
+\end{document}

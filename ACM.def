@@ -1,0 +1,22 @@
+% ==================================
+% Predefined texts
+% ==================================
+%
+%
+%
+\def\CONFERENCENOTICE@SUBMITTED{Submitted for publication}
+\def\CONFERENCENOTICE@ACCEPTED{Accepted for presentation in: \CONFERENCENAME}
+\def\CONFERENCENOTICE@PUBLISHED{Published in: \CONFERENCENAME\\DOI: \href{http://dx.doi.org/\DOI}{\DOI}}
+%
+\def\COPYRIGHTNOTICE@DEFAULT{%
+	\copyright~\COPYRIGHTYEAR~\COPYRIGHTAUTHOR~|~ACM. This is the author's version of the work. It is posted here for your personal use. Not for redistribution.
+}
+%
+%
+%
+\def\COPYRIGHTNOTICE@SUBMITTED{}
+\def\COPYRIGHTNOTICE@ACCEPTED{\COPYRIGHTNOTICE@DEFAULT}
+\def\COPYRIGHTNOTICE@PUBLISHED{\COPYRIGHTNOTICE@DEFAULT The definitive Version of Record was published in the ACM Digital Library, \url{http://dx.doi.org/\DOI}}
+%
+%
+%

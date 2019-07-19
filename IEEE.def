@@ -1,0 +1,21 @@
+% ==================================
+% Predefined texts
+% ==================================
+%
+%
+%
+\def\CONFERENCENOTICE@SUBMITTED{Submitted for publication}
+\def\CONFERENCENOTICE@ACCEPTED{Accepted for presentation in: \CONFERENCENAME}
+\def\CONFERENCENOTICE@PUBLISHED{Published in: \CONFERENCENAME\\DOI: \href{http://dx.doi.org/\DOI}{\DOI}}
+%
+%
+%
+\def\COPYRIGHTNOTICE@DEFAULT{%
+\copyright~\COPYRIGHTYEAR~IEEE. Personal use of this material is permitted. Permission from IEEE must be obtained for all other uses, including reprinting/republishing this material for advertising or promotional purposes, collecting new collected works for resale or redistribution to servers or lists, or reuse of any copyrighted component of this work in other works.
+}
+\def\COPYRIGHTNOTICE@SUBMITTED{}
+\def\COPYRIGHTNOTICE@ACCEPTED{\COPYRIGHTNOTICE@DEFAULT}
+\def\COPYRIGHTNOTICE@PUBLISHED{\COPYRIGHTNOTICE@DEFAULT}
+%
+%
+%

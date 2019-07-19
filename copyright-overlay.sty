@@ -1,0 +1,132 @@
+\NeedsTeXFormat{LaTeX2e}
+\typeout{copyright-overlay.sty <R. Falkenberg>}
+\ProvidesPackage{copyright-overlay}[2019/07/22 Copyright Overlay Package]
+
+\RequirePackage{tikz}
+\usetikzlibrary{positioning}
+\RequirePackage{hyperref}
+\RequirePackage{pdfcomment}
+
+% =================================
+% General definitions
+% =================================
+%
+\def\VOID{}
+%
+%
+%
+% =================================
+% Defaults
+% =================================
+%
+\def\COPYRIGHTYEAR{\the\year}
+\def\COPYRIGHTAUTHOR{\{COPYRIGHT AUTHOR\}}
+\def\CONFERENCENAME{}
+\def\DOI{}
+\def\BIBTEX{}
+% Escape every special character, e.g. {,},... by \{,\},...
+% Use \textCR   for Carriage Return,
+%     \textLF   for Line Feed,
+%     \textHT{} for Tab
+% Example:
+%\def\BIBTEX{%
+%	@InProceedings\{MyBibtexKey2019a,\textCR\textLF
+%		\textHT{}Author = \{Max Mustermann\},\textCR\textLF
+%		\textHT{}Title = \{\{EXAMPLE\}: \{An\} example for a BIBTEX entry\},\textCR\textLF
+%		\textHT{}Booktitle = \{Ultimate Conference 2019\},\textCR\textLF
+%	\}
+%}
+%
+%
+%
+% =================================
+% Process package options
+% =================================
+%
+\def\copyrightDisabled{}
+\DeclareOption{disabled}{
+	\def\copyrightDisabled{y}
+}
+%
+\def\Optionload{} % empty macro
+\DeclareOption*{
+	\IfFileExists{\CurrentOption.def}%   test existance of file
+	{\input{\CurrentOption.def}\def\Optionload{y}} 
+	{\OptionNotUsed}
+}
+\ProcessOptions % run the \DeclareOption-Statements
+\ifx\Optionload\VOID % helper is unset 
+	%        -> load default: IEEE.def
+	\input{IEEE.def}
+\fi
+%
+%
+%
+% =================================
+% User commands
+% =================================
+%
+\newcommand{\CopyrightAuthor}[1]{\def\COPYRIGHTAUTHOR{#1}}
+\newcommand{\CopyrightYear}[1]{\def\COPYRIGHTYEAR{#1}}
+\newcommand{\ConferenceName}[1]{\def\CONFERENCENAME{#1}}
+\newcommand{\Doi}[1]{\def\DOI{#1}}
+\newcommand{\Bibtex}[1]{\def\BIBTEX{#1}}
+%
+\newcommand{\PrintCopyrightOverlay}{\PRINTCOPYRIGHTOVERLAY}
+%
+%
+%
+% =================================
+% Construct outputs
+% =================================
+%
+\def\CONFERENCENOTICE{}
+\def\COPYRIGHTNOTICE{}
+
+\def\PRINTCOPYRIGHTOVERLAY{%
+	\ifx\copyrightDisabled\VOID
+		\ifx\CONFERENCENAME\VOID
+			\def\CONFERENCENOTICE{\CONFERENCENOTICE@SUBMITTED}
+			\def\COPYRIGHTNOTICE{\COPYRIGHTNOTICE@SUBMITTED}
+		\else
+			\ifx\DOI\VOID
+				\def\CONFERENCENOTICE{\CONFERENCENOTICE@ACCEPTED}
+				\def\COPYRIGHTNOTICE{\COPYRIGHTNOTICE@ACCEPTED}	
+			\else
+				\def\CONFERENCENOTICE{\CONFERENCENOTICE@PUBLISHED}
+				\def\COPYRIGHTNOTICE{\COPYRIGHTNOTICE@PUBLISHED}	
+			\fi%
+		\fi%
+		%
+		\def\NODE@PDFCOMMENT{%
+			\ifx\BIBTEX\VOID
+			\else
+				\node[xshift=-1.5cm, yshift=-1.5cm] at (current page.north east) {\pdfcomment[color=yellow,icon=Note]{\BIBTEX}};
+			\fi%
+		}%
+		%
+		\def\NODE@CONFERENCENOTICE{%
+			\ifx\CONFERENCENOTICE\VOID
+			\else
+				\node[below=5mm of current page.north, text width=20cm, font=\sffamily\footnotesize, align=center] (confnotice) {\CONFERENCENOTICE};
+			\fi%
+		}%
+		%
+		\def\NODE@COPYRIGHTNOTICE{%
+			\ifx\COPYRIGHTNOTICE\VOID
+			\else
+				\node[above=5mm of current page.south, text width=15cm,font=\sffamily\footnotesize] {\COPYRIGHTNOTICE};
+			\fi%
+		}%
+		%
+		%
+		\ifcsname tikz@library@external@loaded\endcsname
+			\tikzset{external/export next=false}
+		\fi
+		\begin{tikzpicture}[remember picture, overlay]
+		\NODE@CONFERENCENOTICE
+		\NODE@PDFCOMMENT
+		\NODE@COPYRIGHTNOTICE
+		\end{tikzpicture}%
+	\fi
+}
