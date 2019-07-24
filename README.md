@@ -1,7 +1,7 @@
 Copyright Overlays for Publications
 ======================================
 
-This repository contains a package for overlaying publications with a copyright notice and a reference to the conference/journal, where the document appeared/will appear.
+This repository contains a package for overlaying publications with a copyright notice and a reference to the conference/journal, where the document appeared/will appear. [Here is an Example](example-IEEE.pdf)
 
 The package can be integrated directly into the manuscript's source or can be used as a wrapper for already generated PDF documents.
 
@@ -43,7 +43,7 @@ Include the following definitions into your main ``.tex`` document and fill in y
 	]{copyright-overlay}
 
 \CopyrightAuthor{John Doe}
-\CopyrightYear{2190}
+\CopyrightYear{2999}
 \ConferenceName{Example Conference}
 \Doi{123456/123456789}
 \Bibtex{}
