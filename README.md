@@ -6,6 +6,8 @@ This repository contains a LaTeX package to easily overlay preprints of your pub
 The package can be integrated directly into the manuscript's source or can be used as a wrapper for already generated PDF documents.
 
 ## Disclaimer
+Please check the correctness and completeness of the copyright notices inserted. The authors of this package are not responsible for any claims or damages arising out of the use of this package or the templates it contains.
+
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## License
@@ -51,7 +53,7 @@ Include the following definitions into your main ``.tex`` document and fill in y
 % on each page you wish to generate the overlay
 \PrintCopyrightOverlay
 ```
-Comment or clear the definitions, if their values are not known (yet), e.g. if the paper is accepted for presentation the DOI is not known. The text of the conference note will change appropriately.
+Comment or clear the definitions, if their values are not known (yet), e.g. if the paper is accepted for presentation the DOI may not known yet. The text of the conference note will change appropriately.
 
 The command ``\Bibtex{@inproceedings...}`` generates a PDF comment with the content of its argument in the upper right corner of the first page. This can be used to provide a BibTeX-Entry for your readers. However, special characters, line endings and tabs must be escaped properly:
 
